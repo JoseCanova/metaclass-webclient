@@ -1,15 +1,15 @@
-package test.org.nanotek.webclient;
+package org.nanotek.webclient;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
+import org.nanotek.metaclass.webclient.BaseUriConnection;
 import org.nanotek.metaclass.webclient.config.WebclientConfiguration;
-import org.nanotek.metaclass.webclient.util.BaseUriConnection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest(classes = { WebclientConfiguration.class })
+@SpringBootTest
 public class BaseUriConnectionTest {
 
 	@Autowired

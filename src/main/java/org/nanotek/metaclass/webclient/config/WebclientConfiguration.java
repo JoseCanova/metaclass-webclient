@@ -14,7 +14,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.netty.http.client.HttpClient;
 
 @SpringBootConfiguration
-@ComponentScan(basePackages = {"org.nanotek.metaclass.webclient.util" })
+@ComponentScan(basePackages = {"org.nanotek.metaclass.webclient" })
 public class WebclientConfiguration {
 
 	@SuppressWarnings("deprecation")
