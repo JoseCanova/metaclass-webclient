@@ -4,3 +4,9 @@ server:
   servlet:
     context-path: /
   port: 8088
+
+
+
+webclient-connection:
+    baseUri: http://localhost/meta-class
+    basePort: 8086
