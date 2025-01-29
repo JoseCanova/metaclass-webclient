@@ -20,10 +20,10 @@ public class BaseUriConnectionTest {
 	public void testUriConnection() {
 		assertNotNull(baseUriConnection);
 		assertTrue(8086==baseUriConnection.getBasePort());
-		assertNotNull(baseUriConnection.getBasePath());
-		assertNotNull(baseUriConnection.buildUri());
-		assertTrue (baseUriConnection.buildUri().getClass().equals(URI.class));
-		System.out.println(baseUriConnection.buildUri().toString());
+		assertNotNull(baseUriConnection.getBaseMetaClassPath());
+		assertNotNull(baseUriConnection.buildBaseUri());
+		assertTrue (baseUriConnection.buildBaseUri().getClass().equals(URI.class));
+		System.out.println(baseUriConnection.buildBaseUri().toString());
 	}
 
 }

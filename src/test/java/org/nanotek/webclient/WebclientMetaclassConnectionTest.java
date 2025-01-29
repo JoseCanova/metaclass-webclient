@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.nanotek.meta.model.rdbms.RdbmsMetaClass;
-import org.nanotek.metaclass.webclient.BaseUriConnection;
+import org.nanotek.metaclass.webclient.BaseMetaClassUriService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -22,7 +22,7 @@ public class WebclientMetaclassConnectionTest {
 	WebClient webClient;
 	
 	@Autowired
-	BaseUriConnection baseUriConnection;
+	BaseMetaClassUriService baseUriConnection;
 	
 	public WebclientMetaclassConnectionTest() {
 	}
@@ -35,7 +35,10 @@ public class WebclientMetaclassConnectionTest {
 		assertNotNull(baseUriConnection);
 		
 		List<?> node = webClient.get()
-		.uri(baseUriConnection.buildUri())
+		.uri(baseUriConnection.buildBaseUri()
+				.toString()
+				.concat("/")
+				.concat (baseUriConnection.getBaseMetaClassPath()))
 		.accept(MediaType.APPLICATION_JSON)
 		.httpRequest(httpRequest -> {
 			HttpClientRequest reactorRequest = httpRequest.getNativeRequest();

@@ -14,7 +14,7 @@ import jakarta.annotation.PostConstruct;
 @ConfigurationPropertiesScan
 public class BaseMetaClassUriService{
 	
-	private String basePath;
+	private String baseMetaClassPath;
 	
 	private String scheme;
 	
@@ -33,14 +33,6 @@ public class BaseMetaClassUriService{
 		uriComponentsBuilder =  UriComponentsBuilder.newInstance();
 	}
 
-	public String getBasePath() {
-		return basePath;
-	}
-
-	public void setBasePath(String basePath) {
-		this.basePath = basePath;
-	} 
-	
 	public Integer getBasePort() {
 		return basePort;
 	}
@@ -57,9 +49,7 @@ public class BaseMetaClassUriService{
 		this.scheme = scheme;
 	}
 	
-	public URI buildUri() {
-		return uriComponentsBuilder.scheme(scheme).host(baseHost).port(basePort).pathSegment(basePath).build().toUri();
-	}
+
 
 	public String getBaseHost() {
 		return baseHost;
@@ -69,5 +59,16 @@ public class BaseMetaClassUriService{
 		this.baseHost = baseHost;
 	}
 
+	public String getBaseMetaClassPath() {
+		return baseMetaClassPath;
+	}
+
+	public void setBaseMetaClassPath(String baseMetaClassPath) {
+		this.baseMetaClassPath = baseMetaClassPath;
+	}
+	
+	public URI buildBaseUri() {
+		return uriComponentsBuilder.scheme(scheme).host(baseHost).port(basePort).build().toUri();
+	}
 
 }

@@ -9,6 +9,6 @@ server:
 
 webclient-connection:
     baseHost: localhost
-    basePath: meta-class/
+    baseMetaClassPath: meta-class
     basePort: 8086
     scheme: http
