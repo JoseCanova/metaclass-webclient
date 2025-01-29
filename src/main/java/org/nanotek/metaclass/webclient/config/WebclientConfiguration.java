@@ -11,6 +11,8 @@ import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.http.client.reactive.ReactorResourceFactory;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import reactor.netty.http.client.HttpClient;
 
 @SpringBootConfiguration
@@ -25,6 +27,12 @@ public class WebclientConfiguration {
 		return factory;
 	}
 
+	
+	@Bean
+	public ObjectMapper getObjectMapper() {
+		return new ObjectMapper();
+	}
+	
 	@Bean
 	public WebClient webClient() {
 

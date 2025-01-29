@@ -70,5 +70,9 @@ public class BaseMetaClassUriService{
 	public URI buildBaseUri() {
 		return uriComponentsBuilder.scheme(scheme).host(baseHost).port(basePort).build().toUri();
 	}
+	
+	public String buildMetaClassUriString() {
+		return buildBaseUri().toString().concat("/").concat(baseMetaClassPath);
+	}
 
 }
