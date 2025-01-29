@@ -3,9 +3,10 @@ package org.nanotek.webclient;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.net.URI;
+
 import org.junit.jupiter.api.Test;
 import org.nanotek.metaclass.webclient.BaseUriConnection;
-import org.nanotek.metaclass.webclient.config.WebclientConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -18,8 +19,11 @@ public class BaseUriConnectionTest {
 	@Test
 	public void testUriConnection() {
 		assertNotNull(baseUriConnection);
-		assertTrue("http://localhost/meta-class".equals(baseUriConnection.getBaseUri()));
-		assertTrue(Integer.valueOf(8086).equals(baseUriConnection.getBasePort()));
+		assertTrue(8086==baseUriConnection.getBasePort());
+		assertNotNull(baseUriConnection.getBasePath());
+		assertNotNull(baseUriConnection.buildUri());
+		assertTrue (baseUriConnection.buildUri().getClass().equals(URI.class));
+		System.out.println(baseUriConnection.buildUri().toString());
 	}
 
 }

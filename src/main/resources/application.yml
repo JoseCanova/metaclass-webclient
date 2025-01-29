@@ -8,5 +8,7 @@ server:
 
 
 webclient-connection:
-    baseUri: http://localhost/meta-class
+    baseHost: localhost
+    basePath: meta-class/
     basePort: 8086
+    scheme: http
