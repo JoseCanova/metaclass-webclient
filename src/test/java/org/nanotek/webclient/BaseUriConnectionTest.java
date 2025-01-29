@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.net.URI;
 
 import org.junit.jupiter.api.Test;
-import org.nanotek.metaclass.webclient.BaseUriConnection;
+import org.nanotek.metaclass.webclient.BaseMetaClassUriService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -14,7 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class BaseUriConnectionTest {
 
 	@Autowired
-	BaseUriConnection baseUriConnection;
+	BaseMetaClassUriService baseUriConnection;
 	
 	@Test
 	public void testUriConnection() {

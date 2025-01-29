@@ -12,7 +12,7 @@ import jakarta.annotation.PostConstruct;
 @Service
 @ConfigurationProperties(prefix="webclient-connection")
 @ConfigurationPropertiesScan
-public class BaseUriConnection{
+public class BaseMetaClassUriService{
 	
 	private String basePath;
 	
@@ -24,7 +24,7 @@ public class BaseUriConnection{
 
 	private UriComponentsBuilder uriComponentsBuilder;
 
-	public BaseUriConnection() {
+	public BaseMetaClassUriService() {
 		super();
 	}
 			
