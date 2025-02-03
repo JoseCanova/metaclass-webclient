@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.nanotek.meta.model.rdbms.RdbmsMetaClass;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.validation.Validator;
+import reactor.core.publisher.Mono;
+import reactor.core.publisher.Mono;
 import reactor.netty.http.client.HttpClientRequest;
 
 
@@ -43,9 +46,8 @@ public class MetaClassWebClientService {
 	public MetaClassWebClientService() {
 	}
 	
-	public List<RdbmsMetaClass> retrieveMetaClasses(){
-		var theList = new ArrayList<RdbmsMetaClass>();
-		webClient.get()
+	public Mono<List> retrieveMetaClasses(){
+		return webClient.get()
 				.uri(baseMetaClassUriService.buildBaseUri()
 						.toString()
 						.concat("/")
@@ -57,15 +59,14 @@ public class MetaClassWebClientService {
 				})
 				.retrieve()
 				.bodyToMono(List.class)
-				.subscribe(l -> convertAndPopulateList(l , theList));
-		return theList;
+				.flatMap(l -> Mono.justOrEmpty(l));
 	}
 
 
-	private void convertAndPopulateList(List<?> l, List<RdbmsMetaClass> arrayList) {
-		l.stream()
+	private  List<RdbmsMetaClass> convertAndPopulateList(List<?> l) {
+		return l.stream()
 		.map(jsonNode -> objectMapper.convertValue(jsonNode, RdbmsMetaClass.class))
-		.forEach(mc -> arrayList.add(mc));
+		.collect(Collectors.toList());
 	}
 	
 	
